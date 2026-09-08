@@ -7,6 +7,24 @@ dashboard interactivo.
 Aprenderas trabajando siempre sobre un caso de negocio real: **TiendaPy**,
 una cadena retail ficticia, usando un dataset de ventas simulado.
 
+## 🌐 Ver el curso online
+
+Todo el curso esta publicado como sitio estatico en GitHub Pages, sin
+necesidad de instalar nada:
+
+**👉 [Abrir el curso](https://nelsystems77.github.io/BiwithPython-/)**
+
+Ahi encontraras los 8 notebooks ya ejecutados (con sus graficos) para leer
+directo en el navegador, y un **dashboard interactivo real** que corre
+100% del lado del cliente (sin servidor) usando
+[stlite](https://github.com/whitphx/stlite) — Streamlit compilado a
+WebAssembly.
+
+> Si el link de arriba no carga, es porque GitHub Pages todavia no esta
+> habilitado para este repositorio. Ve a **Settings → Pages** y configura
+> **Source: Deploy from a branch**, eligiendo la rama correspondiente y la
+> carpeta **`/docs`**. Ver la seccion [Publicar en GitHub Pages](#-publicar-en-github-pages) mas abajo.
+
 ## ¿Que vas a construir?
 
 Al terminar el curso vas a tener:
@@ -36,6 +54,12 @@ BiwithPython-/
 ├── solutions/                 # Soluciones de referencia para los retos de cada modulo
 ├── scripts/
 │   └── generate_data.py       # Genera el dataset sintetico data/ventas.csv
+├── docs/                       # Sitio estatico publicado en GitHub Pages
+│   ├── index.html              # Landing page del curso
+│   ├── dashboard.html          # Dashboard interactivo (stlite / WebAssembly)
+│   ├── notebooks/*.html        # Notebooks exportados a HTML (solo lectura)
+│   ├── app/streamlit_app.py    # Copia de app/dashboard.py para stlite
+│   └── data/ventas.csv         # Copia del dataset, servida al dashboard web
 ├── requirements.txt
 └── README.md
 ```
@@ -117,6 +141,58 @@ Modulo 3 (limpieza de datos) tenga sentido practico.
 
 - Python 3.9 o superior.
 - Conocimientos previos: ninguno. El curso parte desde cero en Python.
+
+## 🚀 Publicar en GitHub Pages
+
+Este repositorio ya trae listo todo lo necesario para publicarse como sitio
+estatico en la carpeta [`docs/`](docs/). Para activarlo:
+
+1. En GitHub, ve a **Settings → Pages** del repositorio.
+2. En **Source**, elige **Deploy from a branch**.
+3. En **Branch**, selecciona la rama que quieras publicar (por ejemplo `main`
+   despues de mergear este trabajo) y la carpeta **`/docs`**.
+4. Guarda. GitHub publicara el sitio en unos minutos en
+   `https://<tu-usuario>.github.io/<tu-repo>/`.
+
+### Que incluye el sitio publicado
+
+- **`docs/index.html`**: landing page con el roadmap del curso.
+- **`docs/notebooks/*.html`**: los 8 notebooks exportados con `nbconvert`,
+  ya ejecutados (incluyen todos los graficos), en modo solo lectura.
+- **`docs/dashboard.html`**: el dashboard de Streamlit corriendo **100% en
+  el navegador**, sin backend, gracias a
+  [stlite](https://github.com/whitphx/stlite) (Streamlit + Pyodide/WebAssembly).
+  Usa el mismo codigo que `app/dashboard.py`, copiado en
+  `docs/app/streamlit_app.py` junto con una copia del dataset en
+  `docs/data/ventas.csv`.
+
+### Regenerar el sitio despues de cambiar el curso
+
+Si modificas los notebooks, el dataset o el dashboard, regenera el sitio
+estatico:
+
+```bash
+# 1. Volver a exportar los notebooks a HTML
+jupyter nbconvert --to html --output-dir docs/notebooks notebooks/*.ipynb
+
+# 2. Sincronizar los datos y el codigo del dashboard con la version web
+cp data/ventas.csv docs/data/ventas.csv
+cp app/dashboard.py docs/app/streamlit_app.py
+```
+
+> Nota: `docs/app/streamlit_app.py` es una copia adaptada de
+> `app/dashboard.py` porque stlite necesita que el archivo viva dentro de
+> `docs/` para poder servirlo como parte del sitio estatico.
+
+### Limitaciones de la version web del dashboard
+
+- La primera carga tarda 20-40 segundos: el navegador descarga un interprete
+  de Python (Pyodide) y las librerias (`pandas`, `plotly`, `jinja2`).
+- Corre completamente en el dispositivo del usuario, asi que en equipos muy
+  limitados puede sentirse mas lento que la version local con
+  `streamlit run`.
+- Para desarrollar y depurar el dashboard, sigue usando
+  `streamlit run app/dashboard.py` localmente; es mas rapido para iterar.
 
 ## Licencia
 
