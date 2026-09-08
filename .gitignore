@@ -1,0 +1,27 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Cache de Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Datos derivados (se regeneran con scripts/generate_data.py o los notebooks)
+data/ventas_limpio.csv
+
+# Salidas generadas por los retos (imagenes, html)
+solutions/*.png
+solutions/*.html
+solutions/*.jpg
+
+# Streamlit
+.streamlit/
+
+# Sistema operativo / editores
+.DS_Store
+.vscode/
+.idea/
