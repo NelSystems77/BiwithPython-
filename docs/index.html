@@ -20,7 +20,7 @@
         de cierre — todo en 8 modulos.
       </p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="notebooks/00_configuracion_entorno.html">Empezar el curso →</a>
+        <a class="btn btn-primary" href="lite/notebooks/index.html?path=notebooks/00_configuracion_entorno.ipynb">Empezar el curso →</a>
         <a class="btn btn-secondary" href="dashboard.html">🚀 Probar el dashboard en vivo</a>
       </div>
     </div>
@@ -32,8 +32,8 @@
       <p class="section-sub">Un flujo de BI completo, de punta a punta, sin necesidad de instalar nada para explorar el material.</p>
       <div class="features">
         <div class="feature">
-          <h4>📓 8 notebooks progresivos</h4>
-          <p>De variables en Python a KPIs de negocio, ya ejecutados con sus graficos, listos para leer en el navegador.</p>
+          <h4>📓 8 notebooks ejecutables</h4>
+          <p>De variables en Python a KPIs de negocio — corren Python de verdad en tu navegador (JupyterLite), puedes editar y ejecutar cada celda.</p>
         </div>
         <div class="feature">
           <h4>🧹 Un dataset con problemas reales</h4>
@@ -70,64 +70,88 @@
   <section>
     <div class="container">
       <h2 class="section-title">Ruta del curso</h2>
-      <p class="section-sub">Sigue los modulos en orden. Cada notebook ya esta ejecutado: puedes leerlo directo en el navegador o descargar el repo y correrlo tu mismo.</p>
+      <p class="section-sub">Sigue los modulos en orden. "Abrir y ejecutar" carga un Jupyter real en tu navegador (Python vía WebAssembly) donde puedes editar y correr cada celda — sin instalar nada.</p>
       <div class="modules">
 
-        <a class="module-card" href="notebooks/00_configuracion_entorno.html">
+        <div class="module-card">
           <span class="module-num">00</span>
           <h3>Configuracion del entorno</h3>
           <p>Bienvenida al curso, el caso de negocio TiendaPy y como preparar tu entorno.</p>
-          <span class="view-link">Ver notebook →</span>
-        </a>
+          <div class="card-links">
+            <a class="view-link" href="lite/notebooks/index.html?path=notebooks/00_configuracion_entorno.ipynb">▶ Abrir y ejecutar</a>
+            <a class="view-link-alt" href="notebooks/00_configuracion_entorno.html">version estatica</a>
+          </div>
+        </div>
 
-        <a class="module-card" href="notebooks/01_fundamentos_python.html">
+        <div class="module-card">
           <span class="module-num">01</span>
           <h3>Fundamentos de Python para BI</h3>
           <p>Variables, listas, diccionarios, condicionales, bucles y funciones aplicados a ventas.</p>
-          <span class="view-link">Ver notebook →</span>
-        </a>
+          <div class="card-links">
+            <a class="view-link" href="lite/notebooks/index.html?path=notebooks/01_fundamentos_python.ipynb">▶ Abrir y ejecutar</a>
+            <a class="view-link-alt" href="notebooks/01_fundamentos_python.html">version estatica</a>
+          </div>
+        </div>
 
-        <a class="module-card" href="notebooks/02_pandas_basico.html">
+        <div class="module-card">
           <span class="module-num">02</span>
           <h3>Pandas: cargar y explorar datos</h3>
           <p>Lectura de CSV, seleccion de filas/columnas, filtros y ordenamiento.</p>
-          <span class="view-link">Ver notebook →</span>
-        </a>
+          <div class="card-links">
+            <a class="view-link" href="lite/notebooks/index.html?path=notebooks/02_pandas_basico.ipynb">▶ Abrir y ejecutar</a>
+            <a class="view-link-alt" href="notebooks/02_pandas_basico.html">version estatica</a>
+          </div>
+        </div>
 
-        <a class="module-card" href="notebooks/03_limpieza_datos.html">
+        <div class="module-card">
           <span class="module-num">03</span>
           <h3>Limpieza y transformacion de datos</h3>
           <p>Nulos, duplicados, tipos de datos y creacion de columnas nuevas (feature engineering).</p>
-          <span class="view-link">Ver notebook →</span>
-        </a>
+          <div class="card-links">
+            <a class="view-link" href="lite/notebooks/index.html?path=notebooks/03_limpieza_datos.ipynb">▶ Abrir y ejecutar</a>
+            <a class="view-link-alt" href="notebooks/03_limpieza_datos.html">version estatica</a>
+          </div>
+        </div>
 
-        <a class="module-card" href="notebooks/04_analisis_exploratorio.html">
+        <div class="module-card">
           <span class="module-num">04</span>
           <h3>Analisis exploratorio (EDA) y KPIs</h3>
           <p>groupby, pivot_table y los indicadores de negocio clasicos de un reporte de ventas.</p>
-          <span class="view-link">Ver notebook →</span>
-        </a>
+          <div class="card-links">
+            <a class="view-link" href="lite/notebooks/index.html?path=notebooks/04_analisis_exploratorio.ipynb">▶ Abrir y ejecutar</a>
+            <a class="view-link-alt" href="notebooks/04_analisis_exploratorio.html">version estatica</a>
+          </div>
+        </div>
 
-        <a class="module-card" href="notebooks/05_visualizacion.html">
+        <div class="module-card">
           <span class="module-num">05</span>
           <h3>Visualizacion de datos</h3>
           <p>Graficos de lineas, barras, torta, heatmaps y version interactiva con Plotly.</p>
-          <span class="view-link">Ver notebook →</span>
-        </a>
+          <div class="card-links">
+            <a class="view-link" href="lite/notebooks/index.html?path=notebooks/05_visualizacion.ipynb">▶ Abrir y ejecutar</a>
+            <a class="view-link-alt" href="notebooks/05_visualizacion.html">version estatica</a>
+          </div>
+        </div>
 
-        <a class="module-card" href="notebooks/06_dashboard_streamlit.html">
+        <div class="module-card">
           <span class="module-num">06</span>
           <h3>Dashboards con Streamlit</h3>
           <p>Widgets, layout, cache de datos y el recorrido completo del dashboard final.</p>
-          <span class="view-link">Ver notebook →</span>
-        </a>
+          <div class="card-links">
+            <a class="view-link" href="lite/notebooks/index.html?path=notebooks/06_dashboard_streamlit.ipynb">▶ Abrir y ejecutar</a>
+            <a class="view-link-alt" href="notebooks/06_dashboard_streamlit.html">version estatica</a>
+          </div>
+        </div>
 
-        <a class="module-card" href="notebooks/07_proyecto_final.html">
+        <div class="module-card">
           <span class="module-num">07</span>
           <h3>Proyecto final</h3>
           <p>Instrucciones, entregables y rubrica de autoevaluacion para tu propio analisis de BI.</p>
-          <span class="view-link">Ver notebook →</span>
-        </a>
+          <div class="card-links">
+            <a class="view-link" href="lite/notebooks/index.html?path=notebooks/07_proyecto_final.ipynb">▶ Abrir y ejecutar</a>
+            <a class="view-link-alt" href="notebooks/07_proyecto_final.html">version estatica</a>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -136,7 +160,7 @@
   <section class="alt">
     <div class="container">
       <h2 class="section-title">Corre el curso en tu maquina</h2>
-      <p class="section-sub">Los notebooks de esta pagina son solo lectura. Para escribir codigo y resolver los retos, clona el repositorio:</p>
+      <p class="section-sub">Los notebooks "Abrir y ejecutar" corren de verdad en tu navegador, pero los cambios no se guardan al cerrar la pestaña. Para un entorno persistente con Jupyter normal, clona el repositorio:</p>
       <pre class="code-block">git clone https://github.com/NelSystems77/BiwithPython-.git
 cd BiwithPython-
 python -m venv .venv &amp;&amp; source .venv/bin/activate

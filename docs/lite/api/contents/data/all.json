@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-09-09T00:08:45.530779Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-09-09T00:01:10.070182Z",
+      "mimetype": "text/csv",
+      "name": "ventas.csv",
+      "path": "data/ventas.csv",
+      "size": 1213674,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2026-09-09T00:08:45.530779Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-09-09T00:08:45.530779Z",
+  "mimetype": null,
+  "name": "data",
+  "path": "data",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

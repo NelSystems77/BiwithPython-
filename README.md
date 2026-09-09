@@ -14,11 +14,12 @@ necesidad de instalar nada:
 
 **👉 [Abrir el curso](https://nelsystems77.github.io/BiwithPython-/)**
 
-Ahi encontraras los 8 notebooks ya ejecutados (con sus graficos) para leer
-directo en el navegador, y un **dashboard interactivo real** que corre
-100% del lado del cliente (sin servidor) usando
-[stlite](https://github.com/whitphx/stlite) — Streamlit compilado a
-WebAssembly.
+Ahi encontraras los 8 notebooks corriendo **Python de verdad en tu
+navegador** (edita y ejecuta cada celda, gracias a
+[JupyterLite](https://jupyterlite.readthedocs.io/) + Pyodide/WebAssembly),
+y un **dashboard interactivo real** que tambien corre 100% del lado del
+cliente usando [stlite](https://github.com/whitphx/stlite) — Streamlit
+compilado a WebAssembly. Ninguno de los dos necesita servidor.
 
 > Si el link de arriba no carga, es porque GitHub Pages todavia no esta
 > habilitado para este repositorio. Ve a **Settings → Pages** y configura
@@ -57,10 +58,12 @@ BiwithPython-/
 ├── docs/                       # Sitio estatico publicado en GitHub Pages
 │   ├── index.html              # Landing page del curso
 │   ├── dashboard.html          # Dashboard interactivo (stlite / WebAssembly)
-│   ├── notebooks/*.html        # Notebooks exportados a HTML (solo lectura)
+│   ├── lite/                   # Notebooks ejecutables (JupyterLite / Pyodide)
+│   ├── notebooks/*.html        # Notebooks exportados a HTML (respaldo, solo lectura)
 │   ├── app/streamlit_app.py    # Copia de app/dashboard.py para stlite
 │   └── data/ventas.csv         # Copia del dataset, servida al dashboard web
 ├── requirements.txt
+├── requirements-dev.txt        # Solo para regenerar docs/lite/ (ver mas abajo)
 └── README.md
 ```
 
@@ -157,8 +160,14 @@ estatico en la carpeta [`docs/`](docs/). Para activarlo:
 ### Que incluye el sitio publicado
 
 - **`docs/index.html`**: landing page con el roadmap del curso.
-- **`docs/notebooks/*.html`**: los 8 notebooks exportados con `nbconvert`,
-  ya ejecutados (incluyen todos los graficos), en modo solo lectura.
+- **`docs/lite/`**: los 8 notebooks corriendo **de verdad** en el navegador
+  vía [JupyterLite](https://jupyterlite.readthedocs.io/) + el kernel de
+  Pyodide — puedes editar y ejecutar cada celda, sin backend. Cada tarjeta
+  de modulo en la landing page enlaza directo a
+  `lite/notebooks/index.html?path=notebooks/<archivo>.ipynb`.
+- **`docs/notebooks/*.html`**: los mismos 8 notebooks exportados con
+  `nbconvert` como respaldo de solo lectura (por si JupyterLite tarda en
+  cargar o el navegador no soporta WebAssembly).
 - **`docs/dashboard.html`**: el dashboard de Streamlit corriendo **100% en
   el navegador**, sin backend, gracias a
   [stlite](https://github.com/whitphx/stlite) (Streamlit + Pyodide/WebAssembly).
@@ -172,10 +181,14 @@ Si modificas los notebooks, el dataset o el dashboard, regenera el sitio
 estatico:
 
 ```bash
-# 1. Volver a exportar los notebooks a HTML
+# 1. Volver a exportar los notebooks a HTML (respaldo de solo lectura)
 jupyter nbconvert --to html --output-dir docs/notebooks notebooks/*.ipynb
 
-# 2. Sincronizar los datos y el codigo del dashboard con la version web
+# 2. Reconstruir la version ejecutable con JupyterLite
+pip install -r requirements-dev.txt
+./scripts/build_jupyterlite.sh
+
+# 3. Sincronizar los datos y el codigo del dashboard con la version web
 cp data/ventas.csv docs/data/ventas.csv
 cp app/dashboard.py docs/app/streamlit_app.py
 ```
@@ -184,13 +197,16 @@ cp app/dashboard.py docs/app/streamlit_app.py
 > `app/dashboard.py` porque stlite necesita que el archivo viva dentro de
 > `docs/` para poder servirlo como parte del sitio estatico.
 
-### Limitaciones de la version web del dashboard
+### Limitaciones de las versiones web
 
-- La primera carga tarda 20-40 segundos: el navegador descarga un interprete
-  de Python (Pyodide) y las librerias (`pandas`, `plotly`, `jinja2`).
-- Corre completamente en el dispositivo del usuario, asi que en equipos muy
-  limitados puede sentirse mas lento que la version local con
-  `streamlit run`.
+- La primera carga tarda 20-40 segundos tanto en el dashboard como en cada
+  notebook: el navegador descarga un interprete de Python (Pyodide) y las
+  librerias necesarias (`pandas`, `plotly`, `jinja2`, etc.).
+- Corren completamente en el dispositivo del usuario, asi que en equipos muy
+  limitados pueden sentirse mas lentas que trabajar localmente.
+- En los notebooks de JupyterLite, los cambios **no se guardan** al cerrar
+  la pestaña (viven en memoria del navegador). Para un entorno persistente,
+  clona el repo y usa `jupyter notebook notebooks/` normalmente.
 - Para desarrollar y depurar el dashboard, sigue usando
   `streamlit run app/dashboard.py` localmente; es mas rapido para iterar.
 

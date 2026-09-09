@@ -168,8 +168,20 @@ p.section-sub {
   color: var(--text-muted);
 }
 
-.module-card .view-link {
+.module-card .card-links {
   margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.module-card .view-link-alt {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+
+.module-card .view-link {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--accent);

@@ -1,0 +1,7 @@
+# Dependencias solo para quienes mantienen el repositorio, no para los
+# estudiantes del curso. Necesarias para regenerar docs/lite/ con
+# scripts/build_jupyterlite.sh despues de cambiar un notebook o el dataset.
+jupyterlite-core
+jupyterlite-pyodide-kernel
+jupyter_server
+jupyterlab_server

@@ -21,6 +21,9 @@ solutions/*.jpg
 # Streamlit
 .streamlit/
 
+# Estado interno de "jupyter lite build" (scripts/build_jupyterlite.sh)
+.jupyterlite.doit.db
+
 # Sistema operativo / editores
 .DS_Store
 .vscode/
