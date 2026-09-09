@@ -120,6 +120,56 @@ p.section-sub {
   max-width: 640px;
 }
 
+/* --- Progress summary (memoria en el dispositivo) --- */
+.progress-summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 20px 0 28px;
+  padding: 12px 16px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.progress-summary-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.progress-summary-text span { color: var(--text); font-weight: 700; }
+
+.progress-track {
+  flex: 1;
+  min-width: 120px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 999px;
+  transition: width 0.2s ease;
+}
+
+.progress-reset {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+
+.progress-reset:hover { color: var(--text); border-color: var(--accent); }
+
 /* --- Module cards --- */
 .modules {
   display: grid;
@@ -139,9 +189,26 @@ p.section-sub {
   flex-direction: column;
   gap: 10px;
   transition: transform 0.15s ease, border-color 0.15s ease;
+  position: relative;
 }
 
 .module-card:hover { transform: translateY(-2px); border-color: #bfdbfe; }
+
+.module-card.module-visited { border-color: #86efac; }
+
+.module-card.module-visited::after {
+  content: "✓ Visto";
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #16a34a;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
 
 .module-num {
   display: inline-flex;

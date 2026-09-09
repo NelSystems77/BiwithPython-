@@ -6,6 +6,17 @@
   <title>BI con Python: Zero to Hero</title>
   <meta name="description" content="Curso practico en espanol de Business Intelligence y analisis de datos con Python: pandas, visualizacion y dashboards con Streamlit." />
   <link rel="stylesheet" href="assets/style.css" />
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="icon" href="icons/icon-192.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="BI con Python" />
+  <script src="assets/pwa.js" defer></script>
+  <script src="assets/progress.js" defer></script>
 </head>
 <body>
 
@@ -71,9 +82,18 @@
     <div class="container">
       <h2 class="section-title">Ruta del curso</h2>
       <p class="section-sub">Sigue los modulos en orden. "Abrir y ejecutar" carga un Jupyter real en tu navegador (Python vía WebAssembly) donde puedes editar y correr cada celda — sin instalar nada.</p>
+
+      <div class="progress-summary" id="progressSummary">
+        <div class="progress-summary-text">
+          <span id="progressCount">0 / 8 modulos visitados</span> en este dispositivo
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <button class="progress-reset" id="progressReset" hidden>Reiniciar progreso</button>
+      </div>
+
       <div class="modules">
 
-        <div class="module-card">
+        <div class="module-card" data-module="00">
           <span class="module-num">00</span>
           <h3>Configuracion del entorno</h3>
           <p>Bienvenida al curso, el caso de negocio TiendaPy y como preparar tu entorno.</p>
@@ -83,7 +103,7 @@
           </div>
         </div>
 
-        <div class="module-card">
+        <div class="module-card" data-module="01">
           <span class="module-num">01</span>
           <h3>Fundamentos de Python para BI</h3>
           <p>Variables, listas, diccionarios, condicionales, bucles y funciones aplicados a ventas.</p>
@@ -93,7 +113,7 @@
           </div>
         </div>
 
-        <div class="module-card">
+        <div class="module-card" data-module="02">
           <span class="module-num">02</span>
           <h3>Pandas: cargar y explorar datos</h3>
           <p>Lectura de CSV, seleccion de filas/columnas, filtros y ordenamiento.</p>
@@ -103,7 +123,7 @@
           </div>
         </div>
 
-        <div class="module-card">
+        <div class="module-card" data-module="03">
           <span class="module-num">03</span>
           <h3>Limpieza y transformacion de datos</h3>
           <p>Nulos, duplicados, tipos de datos y creacion de columnas nuevas (feature engineering).</p>
@@ -113,7 +133,7 @@
           </div>
         </div>
 
-        <div class="module-card">
+        <div class="module-card" data-module="04">
           <span class="module-num">04</span>
           <h3>Analisis exploratorio (EDA) y KPIs</h3>
           <p>groupby, pivot_table y los indicadores de negocio clasicos de un reporte de ventas.</p>
@@ -123,7 +143,7 @@
           </div>
         </div>
 
-        <div class="module-card">
+        <div class="module-card" data-module="05">
           <span class="module-num">05</span>
           <h3>Visualizacion de datos</h3>
           <p>Graficos de lineas, barras, torta, heatmaps y version interactiva con Plotly.</p>
@@ -133,7 +153,7 @@
           </div>
         </div>
 
-        <div class="module-card">
+        <div class="module-card" data-module="06">
           <span class="module-num">06</span>
           <h3>Dashboards con Streamlit</h3>
           <p>Widgets, layout, cache de datos y el recorrido completo del dashboard final.</p>
@@ -143,7 +163,7 @@
           </div>
         </div>
 
-        <div class="module-card">
+        <div class="module-card" data-module="07">
           <span class="module-num">07</span>
           <h3>Proyecto final</h3>
           <p>Instrucciones, entregables y rubrica de autoevaluacion para tu propio analisis de BI.</p>

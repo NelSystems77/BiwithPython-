@@ -1,0 +1,30 @@
+{
+  "name": "BI con Python: Zero to Hero",
+  "short_name": "BI con Python",
+  "description": "Curso interactivo de Business Intelligence y analisis de datos con Python: notebooks ejecutables y un dashboard de ventas explorable.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "lang": "es",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-192-maskable.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard TiendaPy",
+      "url": "./dashboard.html",
+      "description": "Abrir el dashboard interactivo"
+    },
+    {
+      "name": "Modulo 00 · Empezar",
+      "url": "./lite/notebooks/index.html?path=notebooks/00_configuracion_entorno.ipynb",
+      "description": "Abrir el primer modulo del curso"
+    }
+  ]
+}

@@ -21,6 +21,12 @@ y un **dashboard interactivo real** que tambien corre 100% del lado del
 cliente usando [stlite](https://github.com/whitphx/stlite) — Streamlit
 compilado a WebAssembly. Ninguno de los dos necesita servidor.
 
+El sitio es tambien una **PWA instalable**: desde el navegador (movil o
+desktop) puedes agregarlo a tu pantalla de inicio y va a recordar, en ese
+dispositivo, que modulos ya visitaste (barra de progreso "X / 8 modulos
+visitados"). La landing page, el dashboard y los notebooks de respaldo en
+HTML quedan disponibles sin conexion despues de la primera visita.
+
 > Si el link de arriba no carga, es porque GitHub Pages todavia no esta
 > habilitado para este repositorio. Ve a **Settings → Pages** y configura
 > **Source: Deploy from a branch**, eligiendo la rama correspondiente y la
@@ -55,13 +61,18 @@ BiwithPython-/
 ├── solutions/                 # Soluciones de referencia para los retos de cada modulo
 ├── scripts/
 │   └── generate_data.py       # Genera el dataset sintetico data/ventas.csv
-├── docs/                       # Sitio estatico publicado en GitHub Pages
+├── docs/                       # Sitio estatico publicado en GitHub Pages (tambien PWA)
 │   ├── index.html              # Landing page del curso
 │   ├── dashboard.html          # Dashboard interactivo (stlite / WebAssembly)
 │   ├── lite/                   # Notebooks ejecutables (JupyterLite / Pyodide)
 │   ├── notebooks/*.html        # Notebooks exportados a HTML (respaldo, solo lectura)
 │   ├── app/streamlit_app.py    # Copia de app/dashboard.py para stlite
-│   └── data/ventas.csv         # Copia del dataset, servida al dashboard web
+│   ├── data/ventas.csv         # Copia del dataset, servida al dashboard web
+│   ├── manifest.json           # Manifest de la PWA (instalable, iconos, atajos)
+│   ├── sw.js                   # Service worker: cache offline del sitio
+│   └── assets/
+│       ├── pwa.js               # Registra el service worker
+│       └── progress.js          # Guarda en localStorage que modulos visitaste
 ├── requirements.txt
 ├── requirements-dev.txt        # Solo para regenerar docs/lite/ (ver mas abajo)
 └── README.md
@@ -174,6 +185,16 @@ estatico en la carpeta [`docs/`](docs/). Para activarlo:
   Usa el mismo codigo que `app/dashboard.py`, copiado en
   `docs/app/streamlit_app.py` junto con una copia del dataset en
   `docs/data/ventas.csv`.
+- **`docs/manifest.json` + `docs/sw.js`**: hacen que el sitio sea una
+  **PWA instalable** (icono en `docs/icons/`, atajos a los modulos). El
+  service worker cachea la landing page, el dashboard y los notebooks de
+  respaldo en HTML para que funcionen sin conexion despues de la primera
+  visita — no cachea `docs/lite/` (que trae su propio service worker) ni
+  las librerias que se cargan desde CDN.
+- **`docs/assets/progress.js`**: guarda en `localStorage` que modulos
+  visitaste desde ese dispositivo y muestra la barra de progreso en la
+  landing page. Es memoria local del navegador, no una cuenta ni algo
+  sincronizado entre dispositivos.
 
 ### Regenerar el sitio despues de cambiar el curso
 
